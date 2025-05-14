@@ -1,0 +1,22 @@
+#server:
+#  port: 8080
+
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    loadbalancer:
+      rule: random
+    gateway:
+        routes:
+          -id: product-service
+#          uri: http://localhost:8081
+          uri: lb://PRODUCT-SERVICE
+          predicates:
+            - Path=/product-service/**
+
+eureka:
+  client:
+    application:
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka/

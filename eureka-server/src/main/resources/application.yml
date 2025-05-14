@@ -1,0 +1,30 @@
+#spring:
+#  application:
+#    name: eureka-server
+#    version: test
+#      -fcfc
+#      -hgbju
+
+#nested
+#more readable
+#can use list
+#boolean,number,string
+
+#used technologies
+#spring boot,kubernetes,docker,ci/cd pipeline(mewage configurations dannath use karano .yml file)
+
+server:
+  port: 8761
+
+  spring:
+    application:
+      name: eureka-server
+
+
+eureka:
+  client:
+#      server should not register itself as a service(server eke client kenek register wena eka nawaththano)
+    register-with-eureka: false
+#      prevent fetching its can service list(client list)
+#      client list eka fletch karanna denne na register karala thiyaganna witharai denne
+    fetch-registry: false
