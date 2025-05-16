@@ -17,30 +17,33 @@ spring:
       routes:
 
         - id: product-service
-
-          #            uri: http://localhost:8081
-
-          uri: lb://PRODUCT-SERVICE
-
+          uri: http://localhost:8081
+#          uri: lb://PRODUCT-SERVICE
           predicates:
-
             - Path=/product-service/**
 
         - id: order-service
-
-          uri: lb://ORDER-SERVICE
-
+          uri: http://localhost:8082
+          #          uri: lb://ORDER-SERVICE
           predicates:
-
             - Path=/order-service/**
 
+        - id: inventory-service
+#          uri: lb://INVENTORY-SERVICE
+         # (ohoma uri eka dammma port number eka nathuwa 8080 port ekenuth run weno)
+          uri: http://localhost:3000
+          predicates:
 
+            - Path=/inventory-service/**
+
+
+        - id: customer-service
+          uri: http://localhost:5000
+          predicates:
+            - Path=/customer-service/**
 
 
 eureka:
-
   client:
-
     serviceUrl:
-
       defaultZone: http://localhost:8761/eureka/
